@@ -1,4 +1,4 @@
-package com.electronicpayment.televentas.shared.exception;
+package com.electronicpayment.televentas.config.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

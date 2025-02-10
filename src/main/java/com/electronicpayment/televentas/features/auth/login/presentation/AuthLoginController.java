@@ -30,6 +30,12 @@ public class AuthLoginController {
 
     @GetMapping("document-types")
     public ResponseEntity<List<DocumentTypeDto>> listDocumentTypes() {
-        return ResponseEntity.ok().body(this.authLoginService.listDocumentTypes());
+        List<DocumentTypeDto> data = this.authLoginService.listDocumentTypes(); 
+
+        if(data.size() == 0) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok().body(data);
     }
 }

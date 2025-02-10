@@ -1,11 +1,9 @@
-package com.electronicpayment.televentas.config;
+package com.electronicpayment.televentas.config.exception;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.server.ResponseStatusException;
-
-import com.electronicpayment.televentas.shared.exception.ExceptionResponseDto;
 
 import lombok.extern.slf4j.Slf4j;
 
