@@ -48,6 +48,10 @@ public class User extends Auditable {
     @JoinColumn(name = "document_type_id")
     private DocumentType documentType;
 
+    public User(UUID id) {
+        this.id = id;
+    }
+
     public User(String document, String password, UUID documentTypeId) {
         this.document = document;
         this.password = password;

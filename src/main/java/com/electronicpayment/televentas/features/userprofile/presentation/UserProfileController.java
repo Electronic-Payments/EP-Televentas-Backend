@@ -8,11 +8,7 @@ import com.electronicpayment.televentas.features.userprofile.domain.services.IUs
 
 import lombok.RequiredArgsConstructor;
 
-import java.util.UUID;
-
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RequiredArgsConstructor
@@ -23,11 +19,8 @@ public class UserProfileController {
     private final IUserProfileService userProfileService;
 
     @GetMapping("profile")
-    public ResponseEntity<UserProfileDto> profile() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UUID userId = UUID.fromString(authentication.getName());
-
-        return ResponseEntity.ok().body(this.userProfileService.profile(userId));
+    public ResponseEntity<UserProfileDto> getProfile() {       
+        return ResponseEntity.ok().body(this.userProfileService.getProfile());
     }
 
 }

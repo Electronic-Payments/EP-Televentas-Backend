@@ -2,9 +2,9 @@ package com.electronicpayment.televentas.features.userprofile.application;
 
 import java.util.UUID;
 
-import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import com.electronicpayment.televentas.features.userprofile.domain.dto.UserProfileDto;
 import com.electronicpayment.televentas.features.userprofile.domain.services.IUserProfileService;
@@ -21,12 +21,11 @@ public class UserProfileService implements IUserProfileService {
     private final IUserRepository userRepository;
 
     @Override
-    public UserProfileDto profile(UUID userId) {
+    public UserProfileDto getProfile() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UUID userId = UUID.fromString(authentication.getName());
+        
         User user = this.userRepository.findById(userId).orElse(null);
-
-        if (user == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado");
-        }
 
         DocumentType documentType = user.getDocumentType();
 
