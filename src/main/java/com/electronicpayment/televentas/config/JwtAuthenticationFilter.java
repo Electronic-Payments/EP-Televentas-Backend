@@ -1,6 +1,8 @@
 package com.electronicpayment.televentas.config;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,13 +23,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtTokenProvider jwtTokenProvider;
 
+    private static final List<String> PUBLIC_URLS = Arrays.asList(
+            "/api/auth/register", "/api/auth/document-types", "/api/auth/login", "/api/error");
+
     public JwtAuthenticationFilter(JwtTokenProvider jwtTokenProvider) {
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-            throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+
+        if (isPublicUrl(request.getRequestURI())) {
+            filterChain.doFilter(request, response);
+            return;
+        }
 
         String token = request.getHeader("Authorization");
 
@@ -58,6 +67,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         filterChain.doFilter(request, response);
+    }
+
+    private boolean isPublicUrl(String url) {
+        return PUBLIC_URLS.stream().anyMatch(url::startsWith);
     }
 
 }
