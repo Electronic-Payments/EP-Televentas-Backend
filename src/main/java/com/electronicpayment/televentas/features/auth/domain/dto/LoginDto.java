@@ -1,4 +1,4 @@
-package com.electronicpayment.televentas.features.auth.login.domain.dto;
+package com.electronicpayment.televentas.features.auth.domain.dto;
 
 import java.util.UUID;
 

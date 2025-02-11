@@ -1,4 +1,4 @@
-package com.electronicpayment.televentas.features.user.profile.application;
+package com.electronicpayment.televentas.features.userprofile.application;
 
 import java.util.UUID;
 
@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.electronicpayment.televentas.features.user.profile.domain.dto.UserProfileDto;
-import com.electronicpayment.televentas.features.user.profile.domain.services.IUserProfileService;
+import com.electronicpayment.televentas.features.userprofile.domain.dto.UserProfileDto;
+import com.electronicpayment.televentas.features.userprofile.domain.services.IUserProfileService;
 import com.electronicpayment.televentas.shared.entities.DocumentType;
 import com.electronicpayment.televentas.shared.entities.User;
 import com.electronicpayment.televentas.shared.repositories.IUserRepository;

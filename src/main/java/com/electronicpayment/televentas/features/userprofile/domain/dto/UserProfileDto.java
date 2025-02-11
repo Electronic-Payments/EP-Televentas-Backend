@@ -1,4 +1,4 @@
-package com.electronicpayment.televentas.features.user.profile.domain.dto;
+package com.electronicpayment.televentas.features.userprofile.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
