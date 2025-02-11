@@ -1,4 +1,4 @@
-package com.electronicpayment.televentas.shared.token;
+package com.electronicpayment.televentas.config.security;
 
 import java.security.Key;
 import java.util.Date;

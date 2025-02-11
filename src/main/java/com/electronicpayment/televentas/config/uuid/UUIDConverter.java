@@ -1,4 +1,4 @@
-package com.electronicpayment.televentas.config;
+package com.electronicpayment.televentas.config.uuid;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;

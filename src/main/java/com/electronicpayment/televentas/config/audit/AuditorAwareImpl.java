@@ -1,4 +1,4 @@
-package com.electronicpayment.televentas.config;
+package com.electronicpayment.televentas.config.audit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.AuditorAware;

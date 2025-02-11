@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/sales-progress")
+@RequestMapping("/api/sales-progress")
 public class SaleProgressController {
     
     private final ISaleProgressService saleProgressService;

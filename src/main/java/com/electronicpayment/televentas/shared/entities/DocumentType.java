@@ -2,7 +2,8 @@ package com.electronicpayment.televentas.shared.entities;
 
 import java.util.UUID;
 
-import com.electronicpayment.televentas.config.UUIDConverter;
+import com.electronicpayment.televentas.config.audit.Auditable;
+import com.electronicpayment.televentas.config.uuid.UUIDConverter;
 
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;

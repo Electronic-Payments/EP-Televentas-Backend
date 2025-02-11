@@ -1,4 +1,4 @@
-package com.electronicpayment.televentas.config;
+package com.electronicpayment.televentas.config.datasource;
 
 import javax.sql.DataSource;
 

@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.electronicpayment.televentas.config.security.JwtTokenProvider;
 import com.electronicpayment.televentas.features.auth.domain.dto.DocumentTypeDto;
 import com.electronicpayment.televentas.features.auth.domain.dto.LoginDto;
 import com.electronicpayment.televentas.features.auth.domain.dto.RegisterUserDto;
@@ -16,7 +17,6 @@ import com.electronicpayment.televentas.shared.entities.DocumentType;
 import com.electronicpayment.televentas.shared.entities.User;
 import com.electronicpayment.televentas.shared.repositories.IDocumentTypeRepository;
 import com.electronicpayment.televentas.shared.repositories.IUserRepository;
-import com.electronicpayment.televentas.shared.token.JwtTokenProvider;
 
 import lombok.RequiredArgsConstructor;
 

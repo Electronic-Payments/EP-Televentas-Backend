@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/bonus")
+@RequestMapping("/api/bonus")
 public class BonusHistoryController {
     
     private final IBonusHistoryService bonusHistoryService;
