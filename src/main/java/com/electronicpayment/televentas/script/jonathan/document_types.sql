@@ -25,3 +25,13 @@ FOREIGN KEY (updated_by) REFERENCES users(id);
 
 
 
+
+ALTER TABLE `Televentas`.`document_types` 
+DROP FOREIGN KEY `fk_document_types_created_by`;
+ALTER TABLE `Televentas`.`document_types` 
+CHANGE COLUMN `created_by` `created_by` BINARY(16) NULL ;
+ALTER TABLE `Televentas`.`document_types` 
+ADD CONSTRAINT `fk_document_types_created_by`
+  FOREIGN KEY (`created_by`)
+  REFERENCES `Televentas`.`users` (`id`);
+s

@@ -40,3 +40,11 @@ ALTER TABLE `Televentas`.`users`
 ADD COLUMN `name` VARCHAR(150) NULL AFTER `password`,
 ADD COLUMN `paternal_last_name` VARCHAR(150) NULL AFTER `name`,
 ADD COLUMN `maternal_last_name` VARCHAR(150) NULL AFTER `paternal_last_name`;
+
+ALTER TABLE `Televentas`.`users` 
+ADD COLUMN `phone` INT NULL AFTER `maternal_last_name`,
+ADD COLUMN `email` VARCHAR(60) NULL AFTER `phone`,
+ADD COLUMN `department` VARCHAR(60) NULL AFTER `email`;
+
+ALTER TABLE `Televentas`.`users` 
+ADD COLUMN `password_changed` TINYINT NULL DEFAULT 0 AFTER `password`;

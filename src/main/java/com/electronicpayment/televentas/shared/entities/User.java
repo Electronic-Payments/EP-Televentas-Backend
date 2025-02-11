@@ -23,6 +23,9 @@ public class User extends Auditable {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "password_changed")
+    private boolean passwordChanged = false;
+
     @Column(name = "name")
     private String name;
 
@@ -31,6 +34,15 @@ public class User extends Auditable {
 
     @Column(name = "maternal_last_name")
     private String maternalLastName;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "department")
+    private String department;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "document_type_id")
@@ -92,6 +104,38 @@ public class User extends Auditable {
 
     public String getMaternalLastName() {
         return maternalLastName;
+    }
+
+    public boolean isPasswordChanged() {
+        return passwordChanged;
+    }
+
+    public void setPasswordChanged(boolean passwordChanged) {
+        this.passwordChanged = passwordChanged;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public void setMaternalLastName(String maternalLastName) {

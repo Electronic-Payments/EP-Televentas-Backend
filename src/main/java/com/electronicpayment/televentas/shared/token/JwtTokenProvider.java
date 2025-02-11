@@ -15,11 +15,12 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.JwtException;
 
 @SuppressWarnings("deprecation")
 @Component
 public class JwtTokenProvider {
-    
+
     @Value("${jwt.secret}")
     private String secretKey;
 
@@ -52,7 +53,7 @@ public class JwtTokenProvider {
         return claims.getSubject();
     }
 
-    public boolean validateToken(String token) {
+    public boolean validateToken(String token) throws JwtException {
         try {
             JwtParser parser = Jwts.parser()
                     .setSigningKey(this.secretKey)
@@ -61,9 +62,9 @@ public class JwtTokenProvider {
             parser.parseClaimsJws(token);
             return true;
         } catch (ExpiredJwtException e) {
-            return false;
-        } catch (Exception e) {
-            return false;
+            throw new JwtException("El token ha expirado. Por favor, inicie sesión nuevamente para obtener un nuevo token de acceso."); 
+        } catch (JwtException e) {
+            throw new JwtException("El token es inválido. Por favor, asegúrese de estar usando un token válido.");
         }
     }
 }
