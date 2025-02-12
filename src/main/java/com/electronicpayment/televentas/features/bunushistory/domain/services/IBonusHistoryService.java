@@ -5,5 +5,5 @@ import java.util.List;
 import com.electronicpayment.televentas.features.bunushistory.domain.dto.BonusHistoryDto;
 
 public interface IBonusHistoryService {
-    List<BonusHistoryDto> listHistory();
+    List<BonusHistoryDto> listHistory(int month);
 }

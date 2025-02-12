@@ -25,11 +25,11 @@ public class BonusHistoryService implements IBonusHistoryService {
     private final IBonusRepository bonusRepository;
 
     @Override
-    public List<BonusHistoryDto> listHistory() {
+    public List<BonusHistoryDto> listHistory(int month) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UUID userId = UUID.fromString(authentication.getName());
 
-        List<Bonus> bonus = this.bonusRepository.findAllByUser(new User(userId));
+        List<Bonus> bonus = this.bonusRepository.findAllByUserAndUploadDateMonth(new User(userId), month);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 

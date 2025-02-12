@@ -1,6 +1,7 @@
 package com.electronicpayment.televentas.features.bunushistory.presentation;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.electronicpayment.televentas.features.bunushistory.domain.dto.BonusHistoryDto;
@@ -22,8 +23,8 @@ public class BonusHistoryController {
     private final IBonusHistoryService bonusHistoryService;
 
     @GetMapping("history")
-    public ResponseEntity<List<BonusHistoryDto>> listHistory() {
-        List<BonusHistoryDto> data = this.bonusHistoryService.listHistory();
+    public ResponseEntity<List<BonusHistoryDto>> listHistory(@RequestParam(value = "month") int month) {
+        List<BonusHistoryDto> data = this.bonusHistoryService.listHistory(month);
 
         if(data.size() == 0) {
             return ResponseEntity.noContent().build();
