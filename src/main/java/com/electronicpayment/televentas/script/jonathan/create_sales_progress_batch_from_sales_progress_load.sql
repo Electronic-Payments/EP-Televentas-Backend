@@ -1,11 +1,15 @@
-USE `Televentas`;
+USE `EP_ENTEL_TELEVENTAS`;
 DROP procedure IF EXISTS `create_sales_progress_batch_from_sales_progress_load`;
 
+USE `EP_ENTEL_TELEVENTAS`;
+DROP procedure IF EXISTS `EP_ENTEL_TELEVENTAS`.`create_sales_progress_batch_from_sales_progress_load`;
+;
+
 DELIMITER $$
-USE `Televentas`$$
-CREATE PROCEDURE `create_sales_progress_batch_from_sales_progress_load` (IN p_upload_date DATE)
+USE `EP_ENTEL_TELEVENTAS`$$
+CREATE DEFINER=`rootDev`@`%` PROCEDURE `create_sales_progress_batch_from_sales_progress_load`(IN p_upload_date DATE)
 BEGIN
-	INSERT INTO `Televentas`.`sales_progress`
+	INSERT INTO `EP_ENTEL_TELEVENTAS`.`sales_progress`
 	(
 		`user_id`,
 		`valid_quantity`,
@@ -28,9 +32,10 @@ BEGIN
         q_multi,
         p_upload_date
 	FROM
-		sales_progress_load spl
+		EP_ENTEL_TELEVENTAS_LOAD.sales_progress_load spl
         JOIN users u ON u.document = spl.documento;
 END$$
 
 DELIMITER ;
+;
 

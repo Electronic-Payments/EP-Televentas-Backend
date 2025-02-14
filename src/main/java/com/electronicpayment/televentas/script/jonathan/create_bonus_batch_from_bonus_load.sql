@@ -1,11 +1,15 @@
-USE `Televentas`;
+USE `EP_ENTEL_TELEVENTAS`;
 DROP procedure IF EXISTS `create_bonus_batch_from_bonus_load`;
 
+USE `EP_ENTEL_TELEVENTAS`;
+DROP procedure IF EXISTS `EP_ENTEL_TELEVENTAS`.`create_bonus_batch_from_bonus_load`;
+;
+
 DELIMITER $$
-USE `Televentas`$$
-CREATE PROCEDURE `create_bonus_batch_from_bonus_load` (IN p_upload_date DATE)
+USE `EP_ENTEL_TELEVENTAS`$$
+CREATE DEFINER=`rootDev`@`%` PROCEDURE `create_bonus_batch_from_bonus_load`(IN p_upload_date DATE)
 BEGIN
-	INSERT INTO `Televentas`.`bonus`
+	INSERT INTO `EP_ENTEL_TELEVENTAS`.`bonus`
 	(
 		`user_id`,
 		`detail`,
@@ -18,9 +22,10 @@ BEGIN
         importe,
         p_upload_date        
 	FROM
-		bonus_load bl
+		EP_ENTEL_TELEVENTAS_LOAD.bonus_load bl
         JOIN users u ON u.document = bl.documento;
 END$$
 
 DELIMITER ;
+;
 

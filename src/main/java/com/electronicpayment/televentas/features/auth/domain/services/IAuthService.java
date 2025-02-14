@@ -11,4 +11,5 @@ public interface IAuthService {
     TokenResponseDto login(LoginDto request);
     List<DocumentTypeDto> listDocumentTypes();
     TokenResponseDto register(RegisterUserDto request);
+    void changePassword(String email, String newPassword);
 }

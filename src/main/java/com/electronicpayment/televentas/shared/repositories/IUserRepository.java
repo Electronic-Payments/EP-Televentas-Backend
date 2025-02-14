@@ -10,4 +10,5 @@ import com.electronicpayment.televentas.shared.entities.User;
 public interface IUserRepository extends JpaRepository<User, UUID> {
     User findByDocument(String username);
     User findByDocumentAndDocumentTypeAndStatus(String document, DocumentType documentType, boolean status);
+    User findByEmail(String email);
 }

@@ -23,7 +23,7 @@ public class BonusHistoryController {
     private final IBonusHistoryService bonusHistoryService;
 
     @GetMapping("history")
-    public ResponseEntity<List<BonusHistoryDto>> listHistory(@RequestParam(value = "month") int month) {
+    public ResponseEntity<List<BonusHistoryDto>> listHistory(@RequestParam int month) {
         List<BonusHistoryDto> data = this.bonusHistoryService.listHistory(month);
 
         if(data.size() == 0) {

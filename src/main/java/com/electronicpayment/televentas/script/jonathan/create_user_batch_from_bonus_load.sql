@@ -1,18 +1,22 @@
+USE `EP_ENTEL_TELEVENTAS`;
+DROP procedure IF EXISTS `create_user_batch_from_bonus_load`;
 
-USE `Televentas`;
-DROP procedure IF EXISTS `Televentas`.`create_user_batch_from_bonus_load`;
+USE `EP_ENTEL_TELEVENTAS`;
+DROP procedure IF EXISTS `EP_ENTEL_TELEVENTAS`.`create_user_batch_from_bonus_load`;
 ;
 
 DELIMITER $$
-USE `Televentas`$$
+USE `EP_ENTEL_TELEVENTAS`$$
 CREATE DEFINER=`rootDev`@`%` PROCEDURE `create_user_batch_from_bonus_load`()
 BEGIN  
-    INSERT IGNORE INTO `Televentas`.`users`
+    INSERT IGNORE INTO `EP_ENTEL_TELEVENTAS`.`users`
     (
         `document_type_id`,
         `document`,
         `password`,
         `name`,
+        paternal_last_name,
+        maternal_last_name,
         phone,
         email,
         department
@@ -28,7 +32,9 @@ BEGIN
             ELSE documento
 		END AS documento,
         "$2a$10$rvjP9yCGBgqpI84pVYc3OeooC0fTJ0zswD5jw0BRD.PvKIlPQO2wm" AS password,
-        nombres_apellidos,
+        nombres,
+        apellido_paterno,
+        apellido_materno,
         CASE 
             WHEN TRIM(telefono) = '' THEN NULL 
             ELSE telefono 
@@ -42,9 +48,10 @@ BEGIN
             ELSE departamento 
         END AS departamento
     FROM
-        bonus_load 
+        EP_ENTEL_TELEVENTAS_LOAD.bonus_load 
     WHERE documento NOT IN (SELECT document FROM users);
 END$$
 
 DELIMITER ;
 ;
+

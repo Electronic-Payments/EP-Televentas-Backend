@@ -68,4 +68,14 @@ public class AuthService implements IAuthService {
         return new TokenResponseDto(accessToken);
     }
 
+    @Override
+    public void changePassword(String email, String newPassword) {
+        User user = this.userRepository.findByEmail(email);
+
+        user.setPassword(this.passwordEncoder.encode(newPassword));
+        user.setPasswordChanged(Boolean.TRUE);
+
+        this.userRepository.save(user);
+    }
+
 }
