@@ -21,7 +21,7 @@ WORKDIR /app
 COPY --from=build /app/target/ep-televentas-backend-0.0.1-SNAPSHOT.jar /app/ep-televentas-backend.jar
 
 # Establece las variables de entorno para Spring
-ENV SPRING_PROFILES_ACTIVE=development
+ENV SPRING_PROFILES_ACTIVE=production
 ENV SPRING_APPLICATION_NAME=ep-televentas-backend
 
 # Expone el puerto para la aplicación
